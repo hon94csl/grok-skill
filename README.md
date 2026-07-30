@@ -18,7 +18,26 @@ grok login
 grok --version
 ```
 
-## 安装 Skill
+## 一键安装
+
+同时安装到 Codex 和 Claude Code 的个人级目录：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/hon94csl/grok-skill/main/install.sh | bash
+```
+
+仅安装到当前 Git 项目：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/hon94csl/grok-skill/main/install.sh \
+  | bash -s -- --project .
+```
+
+脚本可以重复运行：已有正确安装会被保留，技能源会通过 `git pull --ff-only` 更新；遇到未知文件、目录或指向其他位置的符号链接时会停止，不会强制覆盖。
+
+项目模式会安装到 `.agents/skills` 和 `.claude/skills`，并把生成的本机符号链接加入 `.git/info/exclude`，不会修改项目的 `.gitignore`。
+
+## 手动安装
 
 克隆仓库：
 
