@@ -50,7 +50,7 @@ execution_rules="Complete only the bounded task in the prompt. Do not commit, pu
 
 grok_args=(
   --cwd "$PWD"
-  --permission-mode acceptEdits
+  --always-approve
   --no-memory
   --disable-web-search
   --no-subagents
