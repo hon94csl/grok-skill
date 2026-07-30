@@ -121,7 +121,11 @@ if [[ "$scope" == "project" ]]; then
   link_skill "$codex_destination"
   link_skill "$claude_destination"
 
-  exclude_file="$(git -C "$project_root" rev-parse --git-path info/exclude)"
+  git_common_dir="$(git -C "$project_root" rev-parse --git-common-dir)"
+  if [[ "$git_common_dir" != /* ]]; then
+    git_common_dir="$project_root/$git_common_dir"
+  fi
+  exclude_file="$git_common_dir/info/exclude"
   for ignore_path in \
     "/.agents/skills/delegate-to-grok" \
     "/.claude/skills/delegate-to-grok"
